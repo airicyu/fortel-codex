@@ -1,8 +1,8 @@
 'use strict';
 
-DarkBright = require('./dark-bright');
-Essence = require('./essence');
-SkyGround = require('./sky-ground');
+const DarkBright = require('./dark-bright');
+const Essence = require('./essence');
+const SkyGround = require('./sky-ground');
 
 
 //@todo

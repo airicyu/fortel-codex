@@ -1,7 +1,7 @@
 'use strict';
 
-var DarkBright = require('./dark-bright');
-var Essence = require('./essence');
+const  DarkBright = require('./dark-bright');
+const  Essence = require('./essence');
 
 /**
  * 天干

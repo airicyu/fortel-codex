@@ -23,15 +23,21 @@ class DarkBright {
      * get by index or name
      * 
      * @static
-     * @param {number|string} i 
+     * @param {number|string} key
      * @returns {DarkBright}
      * 
      * @memberOf DarkBright
      */
-    static get(i) {
+    static get(key) {
+        if (typeof key === 'string') {
+            if (key === '陰') { return DarkBright.dark }
+            if (key === '陽') { return DarkBright.bright }
+        } else {
         let items = DarkBright.items;
-        return items[((i % items.length) + items.length) % items.length]
+        return items[((key % items.length) + items.length) % items.length]
+        }
     }
+
 }
 DarkBright.items = [new DarkBright(0, '陰'), new DarkBright(1, '陽')];
 DarkBright.dark = DarkBright.items[0];
