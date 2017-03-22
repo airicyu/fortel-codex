@@ -30,11 +30,14 @@ class DarkBright {
      */
     static get(key) {
         if (typeof key === 'string') {
-            if (key === '陰') { return DarkBright.dark }
-            if (key === '陽') { return DarkBright.bright }
+            if (key === '陰') {
+                return DarkBright.dark
+            } else if (key === '陽') {
+                return DarkBright.bright
+            } else return null;
         } else {
-        let items = DarkBright.items;
-        return items[((key % items.length) + items.length) % items.length]
+            let items = DarkBright.items;
+            return items[((key % items.length) + items.length) % items.length]
         }
     }
 

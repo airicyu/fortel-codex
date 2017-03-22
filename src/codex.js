@@ -6,7 +6,7 @@ const SkyGround = require('./sky-ground');
 
 
 //@todo
-class Animal {
+class SolarTerm {
 
 }
 
@@ -14,5 +14,7 @@ module.exports = {
     DarkBright,
     Essence,
     Sky: SkyGround.Sky,
-    Ground: SkyGround.Ground
+    Ground: SkyGround.Ground,
+    GroundHour: SkyGround.GroundHour,
+    Zodiac: SkyGround.Zodiac
 }

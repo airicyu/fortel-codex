@@ -1,16 +1,26 @@
 {
   "name": "fortel-codex",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/airicyu/fortel-codex"
+  },
   "main": "index.js",
   "scripts": {
     "test": "gulp"
   },
   "engines": {
-    "node": "4 || 5 || 6"
+    "node": "4 || 5 || 6 || 7"
   },
+  "keywords": [
+    "天干",
+    "地支",
+    "五行"
+  ],
   "author": "Eric Yu",
-  "license": "ISC",
+  "email": "airic.yu@gmail.com",
+  "license": "Apache-2.0",
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",

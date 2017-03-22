@@ -46,15 +46,18 @@ class Essence {
      * @memberOf Essence
      */
     to(target) {
-        let relativeIndex = target.index - this.index;
-        let relation = ['同', '剋', '被生', '生', '被剋'][(relativeIndex + 5) % 5];
-        let isPositive = (relation === '生' || relation === '被生');
-        let isNegative = (relation === '剋' || relation === '被剋');
-        return {
-            relation,
-            isPositive,
-            isNegative
-        };
+        if (target instanceof Essence) {
+            let relativeIndex = target.index - this.index;
+            let relation = ['同', '剋', '被生', '生', '被剋'][(relativeIndex + 5) % 5];
+            let isPositive = (relation === '生' || relation === '被生');
+            let isNegative = (relation === '剋' || relation === '被剋');
+            return {
+                relation,
+                isPositive,
+                isNegative
+            };
+        }
+        return null;
     }
 
     /**
