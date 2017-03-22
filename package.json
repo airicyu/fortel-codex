@@ -1,7 +1,7 @@
 {
   "name": "fortel-codex",
   "version": "0.0.1",
-  "description": "",
+  "description": "Basic common codex for Chinese Astrology/Divination/Fortune telling.",
   "repository": {
     "type": "git",
     "url": "https://github.com/airicyu/fortel-codex"
@@ -21,6 +21,8 @@
   "author": "Eric Yu",
   "email": "airic.yu@gmail.com",
   "license": "Apache-2.0",
+  "dependencies": {
+  },
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
