@@ -14,6 +14,13 @@
 
 This node.js module is a library for some basic codex of Chinese Astrology. It included "陰陽", "五行", "天干", "地支", "生肖".
 
+
+## Project page
+
+- [Project Home](http://blog.airic-yu.com/2010/fortel-codex)
+- [Github](https://github.com/airicyu/fortel-codex)
+- [NPM](https://www.npmjs.com/package/fortel-codex)
+
 Wiki pages for Chinese Astrology:
 - [陰陽](https://zh.wikipedia.org/wiki/%E9%98%B4%E9%98%B3)
 - [五行](https://zh.wikipedia.org/wiki/%E4%BA%94%E8%A1%8C)
