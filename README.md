@@ -1,4 +1,4 @@
-# fortel-codex
+# fortel-codex.js
 
 [![npm version](https://img.shields.io/npm/v/fortel-codex.svg)](https://www.npmjs.com/package/fortel-codex)
 [![node](https://img.shields.io/node/v/fortel-codex.svg)](https://www.npmjs.com/package/fortel-codex)
