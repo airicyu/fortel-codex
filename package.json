@@ -1,17 +1,15 @@
 {
   "name": "fortel-codex",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Basic common codex for Chinese Astrology/Divination/Fortune telling.",
   "repository": {
     "type": "git",
     "url": "https://github.com/airicyu/fortel-codex"
   },
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
-    "test": "gulp"
-  },
-  "engines": {
-    "node": "4 || 5 || 6 || 7"
+    "test": "nyc mocha",
+    "coverage": "nyc report --reporter=text-lcov > coverage/icov.info && codecov --file=./coverage/lcov.info"
   },
   "keywords": [
     "天干",
@@ -20,16 +18,32 @@
   ],
   "author": "Eric Yu",
   "email": "airic.yu@gmail.com",
-  "license": "Apache-2.0",
-  "dependencies": {
-  },
+  "license": "MIT",
+  "dependencies": {},
   "devDependencies": {
-    "chai": "^3.5.0",
-    "gulp": "^3.9.1",
-    "gulp-istanbul": "^1.1.1",
-    "gulp-mocha": "^3.0.1",
-    "istanbul": "^0.4.5",
-    "spec-xunit-file": "0.0.1-3",
-    "supertest": "^3.0.0"
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "per-file": false,
+    "lines": 30,
+    "statements": 30,
+    "functions": 30,
+    "branches": 30,
+    "include": [
+      "src/**/*.js"
+    ],
+    "exclude": [],
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ],
+    "require": [],
+    "extension": [],
+    "cache": true,
+    "all": true,
+    "report-dir": "./coverage"
   }
 }

@@ -39,81 +39,81 @@ $ npm install --save fortel-codex
 ------------------------
 ## Samples
 
-### DarkBright(陰陽)
+### MoonSun(陰陽)
 ```javascript
 const fortelCodex = require('fortel-codex');
-const DarkBright = fortelCodex.DarkBright;
+const MoonSun = fortelCodex.MoonSun;
 
-var dark = DarkBright.get('陰');
-dark = DarkBright.dark; //or equivalently
-console.log('陰:', dark);
+var moon = MoonSun.get('陰');
+moon = MoonSun.Moon; //or equivalently
+console.log('陰:', moon);
 
-var bright = DarkBright.get('陽');
-bright = DarkBright.bright; //or equivalently
-console.log('陽:', bright);
+var sun = MoonSun.get('陽');
+sun = MoonSun.Sun; //or equivalently
+console.log('陽:', sun);
 ```
 
 Console output
 ```
-陰: DarkBright { index: 0, displayName: '陰' }
-陽: DarkBright { index: 1, displayName: '陽' }
+陰: MoonSun { index: 0, displayName: '陰' }
+陽: MoonSun { index: 1, displayName: '陽' }
 ```
 
-### Essence(五行)
+### Element(五行)
 
 基本五行
 
 ```javascript
-const Essence = fortelCodex.Essence;
+const Element = fortelCodex.Element;
 
 /* 基本五行 Object */
-var gold = Essence.gold;
-gold = Essence.get('金'); //or equivalently
+var gold = Element.Gold;
+gold = Element.get('金'); //or equivalently
 console.log('金: ', gold);
 
-var wood = Essence.wood;
-wood = Essence.get('木'); //or equivalently
+var wood = Element.Wood;
+wood = Element.get('木'); //or equivalently
 console.log('木: ', wood);
 
-var earth = Essence.earth;
-earth = Essence.get('土'); //or equivalently
+var earth = Element.Earth;
+earth = Element.get('土'); //or equivalently
 console.log('土: ', earth);
 
-var water = Essence.water;
-water = Essence.get('水'); //or equivalently
+var water = Element.Water;
+water = Element.get('水'); //or equivalently
 console.log('水: ', water);
 
-var fire = Essence.fire;
-fire = Essence.get('火'); //or equivalently
+var fire = Element.Fire;
+fire = Element.get('火'); //or equivalently
 console.log('火: ', fire);
 ```
 
 Console output
 ```
-金:  Essence { index: 0, displayName: '金' }
-木:  Essence { index: 1, displayName: '木' }
-土:  Essence { index: 2, displayName: '土' }
-水:  Essence { index: 3, displayName: '水' }
-火:  Essence { index: 4, displayName: '火' }
+金:  Element { index: 0, displayName: '金' }
+木:  Element { index: 1, displayName: '木' }
+土:  Element { index: 2, displayName: '土' }
+水:  Element { index: 3, displayName: '水' }
+火:  Element { index: 4, displayName: '火' }
 ```
 
 五行關係
 
 ```javascript
 console.log('五行生剋關係1:');
-console.log(`金${gold.to(gold).relation}金`);
-console.log(`金${gold.to(wood).relation}木`);
-console.log(`金${gold.to(earth).relation}土`);
-console.log(`金${gold.to(water).relation}水`);
-console.log(`金${gold.to(fire).relation}火`);
+console.log(`金${gold.to(gold).relationship}金`);
+console.log(`金${gold.to(wood).relationship}木`);
+console.log(`金${gold.to(earth).relationship}土`);
+console.log(`金${gold.to(water).relationship}水`);
+console.log(`金${gold.to(fire).relationship}火`);
 
 console.log('\n');
 
 console.log('五行生剋關係2:');
-console.log(`金生${gold.feed.displayName}`);
-console.log(`金被${gold.feeded.displayName}所生`);
-console.log(`金剋${gold.suppress.displayName}`);
-console.log(`金被${gold.suppressed.displayName}所剋`);
+console.log(`金生${gold.getEnhance().displayName}`);
+console.log(`金被${gold.getEnhancedBy().displayName}所生`);
+console.log(`金剋${gold.getSuppress().displayName}`);
+console.log(`金被${gold.getSuppressedBy().displayName}所剋`);
 ```
 
 Console output
@@ -133,15 +133,15 @@ Console output
 金被火所剋
 ```
 
-### Sky(天干)
+### Stem(天干)
 
-Array of Sky object(天干)
+Array of Stem object(天干)
 ```javascript
 const fortelCodex = require('fortel-codex');
-const Sky = fortelCodex.Sky;
+const Stem = fortelCodex.Stem;
 
 /* 基本天干 Object */
-var items = Sky.items; //Array of "天干"
+var items = Stem.items; //Array of "天干"
 var output = "";
 for(let item of items){
     output += item.displayName;
@@ -158,62 +158,62 @@ Get by index
 ```javascript
 const util = require('util');
 const fortelCodex = require('fortel-codex');
-const Sky = fortelCodex.Sky;
+const Stem = fortelCodex.Stem;
 
 /* Get 天干 by index */
-console.log('0: '+util.inspect(Sky.get(0)));
-console.log('1: '+util.inspect(Sky.get(1)));
+console.log('0: '+util.inspect(Stem.get(0)));
+console.log('1: '+util.inspect(Stem.get(1)));
 console.log('......\n');
 ```
 
 Console output
 ```
-0: Sky {
+0: Stem {
   index: 0,
   displayName: '甲',
-  darkBright: DarkBright { index: 1, displayName: '陽' },
-  essence: Essence { index: 1, displayName: '木' } }
-1: Sky {
+  moonSun: MoonSun { index: 1, displayName: '陽' },
+  element: Element { index: 1, displayName: '木' } }
+1: Stem {
   index: 1,
   displayName: '乙',
-  darkBright: DarkBright { index: 0, displayName: '陰' },
-  essence: Essence { index: 1, displayName: '木' } }
+  moonSun: MoonSun { index: 0, displayName: '陰' },
+  element: Element { index: 1, displayName: '木' } }
 ```
 
 Get by name
 ```javascript
 const util = require('util');
 const fortelCodex = require('fortel-codex');
-const Sky = fortelCodex.Sky;
+const Stem = fortelCodex.Stem;
 
 /* Get 天干 by display name */
-console.log('0: '+util.inspect(Sky.get('甲')));
-console.log('1: '+util.inspect(Sky.get('乙')));
+console.log('0: '+util.inspect(Stem.get('甲')));
+console.log('1: '+util.inspect(Stem.get('乙')));
 console.log('......\n');
 ```
 
 Console output
 ```
-0: Sky {
+0: Stem {
   index: 0,
   displayName: '甲',
-  darkBright: DarkBright { index: 1, displayName: '陽' },
-  essence: Essence { index: 1, displayName: '木' } }
-1: Sky {
+  moonSun: MoonSun { index: 1, displayName: '陽' },
+  element: Element { index: 1, displayName: '木' } }
+1: Stem {
   index: 1,
   displayName: '乙',
-  darkBright: DarkBright { index: 0, displayName: '陰' },
-  essence: Essence { index: 1, displayName: '木' } }
+  moonSun: MoonSun { index: 0, displayName: '陰' },
+  element: Element { index: 1, displayName: '木' } }
 ```
 
 天干合化
 ```javascript
 /* 天干合化 */
-console.log('甲己合化' + Sky.get('甲').sythesis(Sky.get('己')).displayName); //甲己合化土
-console.log('乙庚合化' + Sky.get('乙').sythesis(Sky.get('庚')).displayName); //乙庚合化金
-console.log('丙辛合化' + Sky.get('丙').sythesis(Sky.get('辛')).displayName); //丙辛合化水
-console.log('丁壬合化' + Sky.get('丁').sythesis(Sky.get('壬')).displayName); //丁壬合化木
-console.log('戊癸合化' + Sky.get('戊').sythesis(Sky.get('癸')).displayName); //戊癸合化火
+console.log('甲己合化' + Stem.get('甲').getSythesisResult(Stem.get('己')).displayName); //甲己合化土
+console.log('乙庚合化' + Stem.get('乙').getSythesisResult(Stem.get('庚')).displayName); //乙庚合化金
+console.log('丙辛合化' + Stem.get('丙').getSythesisResult(Stem.get('辛')).displayName); //丙辛合化水
+console.log('丁壬合化' + Stem.get('丁').getSythesisResult(Stem.get('壬')).displayName); //丁壬合化木
+console.log('戊癸合化' + Stem.get('戊').getSythesisResult(Stem.get('癸')).displayName); //戊癸合化火
 ```
 
 Console output
@@ -228,8 +228,8 @@ Console output
 天干相剋
 ```javascript
 /* 天干相剋 */
-console.log('甲剋' + Sky.get('甲').suppress.displayName);
-console.log('戊被' + Sky.get('戊').suppressed.displayName + '所剋');
+console.log('甲剋' + Stem.get('甲').getSuppress().displayName);
+console.log('戊被' + Stem.get('戊').getSuppressedBy().displayName + '所剋');
 ```
 
 Console output
@@ -238,15 +238,15 @@ Console output
 戊被甲所剋
 ```
 
-### Ground(地支)
+### Branch(地支)
 
-Array of Ground object(地支)
+Array of Branch object(地支)
 ```javascript
 const fortelCodex = require('fortel-codex');
-const Ground = fortelCodex.Ground;
+const Branch = fortelCodex.Branch;
 
 /* 基本地支 Object */
-var items = Ground.items; //Array of "地支"
+var items = Branch.items; //Array of "地支"
 var output = "";
 for(let item of items){
     output += item.displayName;
@@ -262,114 +262,112 @@ Console output
 Get by index
 ```javascript
 /* Get 地支 by index */
-console.log('0: '+util.inspect(Ground.get(0)));
-console.log('1: '+util.inspect(Ground.get(1)));
+console.log('0: '+util.inspect(Branch.get(0)));
+console.log('1: '+util.inspect(Branch.get(1)));
 console.log('......\n');
 ```
 
 Console output
 ```
-0: Ground {
+0: Branch {
   index: 0,
   displayName: '子',
-  darkBright: DarkBright { index: 1, displayName: '陽' },
-  essence: Essence { index: 3, displayName: '水' },
-  baseSky:
-   Sky {
+  moonSun: MoonSun { index: 1, displayName: '陽' },
+  element: Element { index: 3, displayName: '水' },
+  baseStem:
+   Stem {
      index: 9,
      displayName: '癸',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 3, displayName: '水' } },
-  collectSky: null,
-  remainSky: null,
-  direction: '北' }
-1: Ground {
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 3, displayName: '水' } },
+  collectStem: null,
+  remainStem: null }
+1: Branch {
   index: 1,
   displayName: '丑',
-  darkBright: DarkBright { index: 0, displayName: '陰' },
-  essence: Essence { index: 2, displayName: '土' },
-  baseSky:
-   Sky {
+  moonSun: MoonSun { index: 0, displayName: '陰' },
+  element: Element { index: 2, displayName: '土' },
+  baseStem:
+   Stem {
      index: 5,
      displayName: '己',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 2, displayName: '土' } },
-  collectSky:
-   Sky {
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 2, displayName: '土' } },
+  collectStem:
+   Stem {
      index: 7,
      displayName: '辛',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 0, displayName: '金' } },
-  remainSky:
-   Sky {
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 0, displayName: '金' } },
+  remainStem:
+   Stem {
      index: 9,
      displayName: '癸',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 3, displayName: '水' } },
-  direction: '東北偏北' }
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 3, displayName: '水' } } }
+......
 ```
 
 Get by name
 ```javascript
 const util = require('util');
 const fortelCodex = require('fortel-codex');
-const Sky = fortelCodex.Sky;
+const Stem = fortelCodex.Stem;
 
 /* Get 地支 by display name */
-console.log('0: '+util.inspect(Sky.get('子')));
-console.log('1: '+util.inspect(Sky.get('丑')));
+console.log('0: '+util.inspect(Stem.get('子')));
+console.log('1: '+util.inspect(Stem.get('丑')));
 console.log('......\n');
 ```
 
 Console output
 ```
-0: Ground {
+0: Branch {
   index: 0,
   displayName: '子',
-  darkBright: DarkBright { index: 1, displayName: '陽' },
-  essence: Essence { index: 3, displayName: '水' },
-  baseSky:
-   Sky {
+  moonSun: MoonSun { index: 1, displayName: '陽' },
+  element: Element { index: 3, displayName: '水' },
+  baseStem:
+   Stem {
      index: 9,
      displayName: '癸',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 3, displayName: '水' } },
-  collectSky: null,
-  remainSky: null,
-  direction: '北' }
-1: Ground {
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 3, displayName: '水' } },
+  collectStem: null,
+  remainStem: null }
+1: Branch {
   index: 1,
   displayName: '丑',
-  darkBright: DarkBright { index: 0, displayName: '陰' },
-  essence: Essence { index: 2, displayName: '土' },
-  baseSky:
-   Sky {
+  moonSun: MoonSun { index: 0, displayName: '陰' },
+  element: Element { index: 2, displayName: '土' },
+  baseStem:
+   Stem {
      index: 5,
      displayName: '己',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 2, displayName: '土' } },
-  collectSky:
-   Sky {
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 2, displayName: '土' } },
+  collectStem:
+   Stem {
      index: 7,
      displayName: '辛',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 0, displayName: '金' } },
-  remainSky:
-   Sky {
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 0, displayName: '金' } },
+  remainStem:
+   Stem {
      index: 9,
      displayName: '癸',
-     darkBright: DarkBright { index: 0, displayName: '陰' },
-     essence: Essence { index: 3, displayName: '水' } },
-  direction: '東北偏北' }
+     moonSun: MoonSun { index: 0, displayName: '陰' },
+     element: Element { index: 3, displayName: '水' } } }
+......
 ```
 
 地支六合局
 ```javascript
 /* Get 地支六合局 */
-let combinations = Ground.checkCombinations([Ground.get('子'), Ground.get('丑')]);
-console.log("子丑合化"+combinations.sixSythesis[0].essence.displayName);
+let combinations = Branch.checkCombinations([Branch.get('子'), Branch.get('丑')]);
+console.log("子丑合化"+combinations.sixSythesis[0].element.displayName);
 
-console.log("寅亥合化"+Ground.checkSixSythesis(Ground.get('寅'), Ground.get('亥')).displayName);
+console.log("寅亥合化"+Branch.checkSixSythesis(Branch.get('寅'), Branch.get('亥')).displayName);
 ```
 
 Console output
@@ -381,10 +379,10 @@ Console output
 地支三合局
 ```javascript
 /* Get 地支三合局 */
-let combinations = Ground.checkCombinations([Ground.get('申'), Ground.get('子'), Ground.get('辰')]);
-console.log("申子辰三合"+combinations.threeSythesis[0].combination.essence.displayName+"局");
+let combinations = Branch.checkCombinations([Branch.get('申'), Branch.get('子'), Branch.get('辰')]);
+console.log("申子辰三合"+combinations.threeSythesis[0].combination.element.displayName+"局");
 
-console.log("寅戌合"+Ground.checkThreeSythesis(Ground.get('寅'), Ground.get('戌')).essence.displayName+"局");
+console.log("寅戌合"+Branch.checkThreeSythesis(Branch.get('寅'), Branch.get('戌')).element.displayName+"局");
 ```
 
 Console output
@@ -396,8 +394,8 @@ Console output
 地支相沖
 ```javascript
 /* Get 地支相沖 */
-console.log(Ground.checkOpposite(Ground.get('子'), Ground.get('午')));
-console.log(Ground.checkOpposite(Ground.get('子'), Ground.get('亥')));
+console.log(Branch.checkOpposite(Branch.get('子'), Branch.get('午')));
+console.log(Branch.checkOpposite(Branch.get('子'), Branch.get('亥')));
 ```
 
 Console output
@@ -409,10 +407,10 @@ false
 地支相刑
 ```javascript
 /* Get 地支相刑 */
-let combinations = Ground.checkCombinations([Ground.get('寅'), Ground.get('巳'), Ground.get('申')]);
+let combinations = Branch.checkCombinations([Branch.get('寅'), Branch.get('巳'), Branch.get('申')]);
 console.log(combinations.punishment[0].type);
 
-combinations = Ground.checkCombinations([Ground.get('午'), Ground.get('午')]);
+combinations = Branch.checkCombinations([Branch.get('午'), Branch.get('午')]);
 console.log(combinations.punishment[0].type);
 ```
 
@@ -426,8 +424,8 @@ Console output
 ```javascript
 /* Get 地支相害 */
 /* Get 地支相刑 */
-console.log(Ground.checkHarm(Ground.get('子'), Ground.get('未')));
-console.log(Ground.checkHarm(Ground.get('子'), Ground.get('丑')));
+console.log(Branch.checkHarm(Branch.get('子'), Branch.get('未')));
+console.log(Branch.checkHarm(Branch.get('子'), Branch.get('丑')));
 ```
 
 Console output
@@ -436,13 +434,13 @@ true
 false
 ```
 
-### GroundHour(時辰)
-Array of GroundHour object(時辰)
+### BranchHour(時辰)
+Array of BranchHour object(時辰)
 ```javascript
 const fortelCodex = require('fortel-codex');
-const GroundHour = fortelCodex.GroundHour;
+const BranchHour = fortelCodex.BranchHour;
 
-var items = GroundHour.items; //Array of "時辰"
+var items = BranchHour.items; //Array of "時辰"
 console.log(items.map(item=>item.displayName).join(', '));
 ```
 
